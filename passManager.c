@@ -2,14 +2,14 @@
 #include <stdlib.h>
 #include <string.h>
 #include <stdbool.h>
-
+#include <conio.h>
 
 void add () {
 
   char email[100];
   char  passw[100];
   char  sito[100];
-  printf("\e[1;1H\e[2J");
+  system("cls");
   puts("sito del login: (no spazi)");
   scanf("%s", sito);
   puts("email or username: ");
@@ -25,9 +25,8 @@ void add () {
   
   puts("Credenziali inserite correttamente!");
   puts("\n\n\nQualsiasi tasto per tornare al menu principale...");
-  char ch; 
-  scanf(" %c", &ch);
-  printf("\e[1;1H\e[2J");
+  getch();
+  system("cls");
 
 }
 
@@ -42,7 +41,7 @@ void modify(){
   char *token;
   int sesso;
   int trovato=0;
-  printf("\e[1;1H\e[2J");
+  system("cls");
   puts("Nome del login da modificare? ");
   scanf("%s", query);
   puts("\n");
@@ -64,7 +63,7 @@ void modify(){
             risposta=sesso;
             if (risposta == 0)
                 {
-                  printf("\e[1;1H\e[2J");
+                  system("cls");
                   puts("Nuovo nome del Sito: ");
                   scanf("%s", newSito);
                   puts("Nuovo Email/Username: ");
@@ -86,8 +85,7 @@ void modify(){
       puts("Credenziali NON trovate! \n\n\n");
   }
   puts("Qualsiasi tasto per tornare al menu principale...");
-  char x;
-  scanf("%c", &x);
+  getch();
   fclose(pt);
   fclose(ptemp);
   remove("nomeDelFile.txt");
@@ -125,25 +123,22 @@ void search(){
   }
 
   fclose(pt);
-
+  system("cls");
+  
   if (trovato){
-  printf("\e[1;1H\e[2J");
+ 
   puts("Ecco le informazioni: ");
   printf("Sito:%s,  Email:%s, Password:%s\n\n", newSito,newEmail, newPassw);
-  puts("Qualsiasi tasto per tornare al menu principale...");
-  char ch; 
-  scanf(" %c", &ch);
-  printf("\e[1;1H\e[2J");
+
 }
   
   else
-  {
     puts("Nessuna credenziale trovata! \n\n");
-    puts("Qualsiasi tasto per tornare al menu principale...");
-    char lol; 
-    scanf(" %c", &lol);
-    printf("\e[1;1H\e[2J");
-}
+    
+  puts("Qualsiasi tasto per tornare al menu principale...");
+  getch();
+  system("cls");
+
 }
   
 
@@ -160,28 +155,27 @@ int main () {
         switch (scelta)
         {
         case 1:
-          printf("\e[1;1H\e[2J");
+          system("cls");
           add();  
           break;
         case 2:
-          printf("\e[1;1H\e[2J");
+          system("cls");
           modify();
           break;
         case 3:
-          printf("\e[1;1H\e[2J");
+          system("cls");
           search();
           break;
         case 4:
-          printf("\e[1;1H\e[2J");
+          system("cls");
           exit(EXIT_SUCCESS);
           break;
         
         default:
-          printf("\e[1;1H\e[2J");
+          system("cls");
           puts("AOOOOOOOOO\n MA SI SCEMUNIT? SCRIVI BUON\n\n");
           puts("Qualsiasi tasto per tornare al menu principale...");
-          char lol; 
-          scanf(" %c", &lol);
+          getch();
           break;
         }
     }
