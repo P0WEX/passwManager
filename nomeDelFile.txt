@@ -5,5 +5,7 @@ github:test1:test1
 github:test2:test2
 youtube:test2:test2
 youtube:test3:test3
-
-
+ted:davide@me.com:twitter
+blob:blob@blob.it:blobbiti
+df:fgh:fgh
+asdasdas:asdasd:adsasda

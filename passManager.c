@@ -2,7 +2,9 @@
 #include <stdlib.h>
 #include <string.h>
 #include <stdbool.h>
-#include <conio.h>
+
+
+char c;
 
 void add () {
 
@@ -25,7 +27,6 @@ void add () {
 
   FILE *pt;
   pt = fopen("nomeDelFile.txt","a");
-  fprintf(pt,"\n");
   fprintf(pt,"%s:%s:%s",sito , email, passw);
   fclose(pt);
 
@@ -33,7 +34,7 @@ void add () {
   puts("\n\nCredenziali aggiunte correttamente!");
   printf("\033[0m");
   puts("\n\n\nQualsiasi tasto per tornare al menu principale...");
-  getch();
+  scanf("%c",&c);
   system("cls");
 
 }
@@ -119,7 +120,7 @@ void modify(){
       printf("\033[0m");
   }
   puts("\n\nQualsiasi tasto per tornare al menu principale...");
-  getch();
+  scanf("%c",&c);
   fclose(pt);
   fclose(ptemp);
   remove("nomeDelFile.txt");
@@ -177,14 +178,44 @@ void search(){
       printf("\033[0m");
      }
   puts("Qualsiasi tasto per tornare al menu principale...");
-  getch();
+  scanf("%c",&c);
   system("cls");
 
 }
+void viewAll(){
+  char creds[255];
+  char *token;
+  FILE *pt;
+  pt= fopen("nomeDelFile.txt", "r");
+  while ( (fgets(creds, sizeof(creds), pt) != NULL)){
+        token=strtok(creds, ":");
+        printf("\033[1;32m");
+        printf("Sito: ");
+        printf("\033[0m");
+        printf("%s  ",token);
+        token=strtok(NULL, ":");
+        printf("\033[1;32m");
+        printf("Username/Email: ");
+        printf("\033[0m");
+        printf("%s  ",token);
+        token=strtok(NULL, ":");
+        printf("\033[1;32m");
+        printf("Password: ");
+        printf("\033[0m");
+        printf("%s  ",token);
+        token=strtok(NULL, ":");
 
+  }
+  puts("\n");
+  fclose(pt);
+  puts("Qualsiasi tasto per tornare al menu principale...");
+  scanf("%c",&c);
+  sleep(4);
+  system("cls");
+}
 
 int main () {
-    size_t scelta;
+    int scelta;
     char masterPasw[50];
 
     puts("\t\t\t   |                           |     ");
@@ -222,10 +253,11 @@ int main () {
 
         printf("%c 1 - Aggiungere una credenziale\n", 201);
         printf("%c 2 - Modificare una credenziale\n", 204);
-        printf("%c 3 - Visualizzare una credenziale\n", 204);
-        printf("%c 4 - Esci\n\n? ", 200);
+        printf("%c 3 - Cercare una credenziale\n", 204);
+        printf("%c 4 - Visuallizza tutte le credenziali\n", 204);
+        printf("%c 5 - Esci\n\n? ", 200);
         scanf("%d", &scelta);
-        }while (scelta < 0 || scelta > 5);
+       }while (scelta < 0 || scelta > 6);
         switch (scelta)
         {
         case 1:
@@ -236,12 +268,15 @@ int main () {
           system("cls");
           modify();
           break;
-
         case 3:
           system("cls");
           search();
           break;
         case 4:
+          system("cls");
+          viewAll();
+          break;
+        case 5:
           system("cls");
           printf("\n\n\n\t\t\tCC 2020 - P0WEX Creative Commons Lincenses ");
           sleep(1);
@@ -252,6 +287,7 @@ int main () {
     }
 
     return 0;
+}
 }
 
 /*
