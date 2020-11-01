@@ -185,6 +185,30 @@ void search(){
 
 int main () {
     size_t scelta;
+    char masterPasw[50];
+
+    puts("\t\t\t   |                           |     ");
+    puts("\t\t\t___|___________________________|_____");
+    puts("\t\t\t|                                   |");
+    puts("\t\t\t| + Inserisci la master password +  |");
+    puts("\t\t\t|___________________________________|");
+    scanf("%s",masterPasw);
+
+    if (strcmp(masterPasw, "password")!= 0)
+        {
+          system("cls");
+          printf("\033[1;31m");
+          printf("\n\n\n\t\t\t Master Password Sbagliata! Error:912");
+          printf("\033[0m");
+          sleep(2);
+          system("cls");
+
+          printf("\n\n\n\t\t\tCC 2020 - P0WEX Creative Commons Lincenses ");
+          sleep(1);
+          system("cls");
+          exit(EXIT_SUCCESS);
+        }
+    else{
     while (1)
     {
         do{
