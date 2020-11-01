@@ -37,7 +37,6 @@ void add () {
   system("cls");
 
 }
-
 void modify(){
   char query[100];
   char creds[250];
@@ -106,8 +105,8 @@ void modify(){
             else
                 fprintf(ptemp, "%s",temp );
       }
-      else 
-        fprintf(ptemp, "%s",temp );      
+      else
+        fprintf(ptemp, "%s",temp );
       }
   if (trovato==1 && risposta == 0){
       printf("\033[0;32m");
@@ -125,9 +124,9 @@ void modify(){
   fclose(ptemp);
   remove("nomeDelFile.txt");
   rename("nomeDelFileTemporaneo.txt", "nomeDelFile.txt");
-  
-  
-  
+
+
+
 }
 void search(){
   char query[100];
@@ -167,11 +166,11 @@ void search(){
           printf("%s",newPassw);
           trovato=1;
       }
-      
+
   }
   puts("\n");
   fclose(pt);
-  
+
   if (trovato == 0){
       printf("\033[1;31m");
       puts("Nessuna credenziale trovata! \n\n");
@@ -182,13 +181,12 @@ void search(){
   system("cls");
 
 }
-  
+
 
 int main () {
     size_t scelta;
-
     while (1)
-    {   
+    {
         do{
         system("cls");
         printf("\033[01;33m");
@@ -208,7 +206,7 @@ int main () {
         {
         case 1:
           system("cls");
-          add();  
+          add();
           break;
         case 2:
           system("cls");
